@@ -15,4 +15,4 @@ Here you will find the code I wrote to generate the data presented in ["The ther
 
 3) [Boost](https://www.boost.org/)
 
-   Uses the wrapper of the Boost libray to manipulate Mpreal 
+   Uses the wrapper of the Boost libray to manipulate float128 numbers.
