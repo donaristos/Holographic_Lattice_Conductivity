@@ -24,6 +24,8 @@ The folder structure of the repository is:
  * *Mathematica*
 
    Contains the Mathematica notebooks I used to write the equations of motion of Einstein-Maxwell-Dilaton including the DeTurck trick term in Einstein's equations. The subfolder "Background" contains the notebooks concerning the background geometries. The subfolder "Conductivity" contains the notebooks for the equations governing the computation of the optical conductivity.
+   
+   In case you find it useful, I have included the notebooks Thermo and CNotebook. These are used to manipulate the data and extract boundary theory quantities for the backgrounds and the conductivity perturbation respectively. Moreoever, they are used to generate the differentiation matrices for both finite differences as well as spectral methods.
 
  * *Sourcefiles*
 
@@ -35,6 +37,6 @@ The folder structure of the repository is:
 
 * *Perturbation*
 
-   The program that compute the optical conductivities of the holographic lattice
+   The program that computes the optical conductivities of the holographic lattice.
 
   
