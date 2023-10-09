@@ -3,7 +3,7 @@
 Here you will find the code I wrote to generate the data presented in ["The thermoelectric properties of inhomogeneous holographic lattices"](https://arxiv.org/abs/1409.6875) by A. Donos and J. Gauntlett. The code is in C++ and it required the libraries:
 1) [Eigen](https://eigen.tuxfamily.org/index.php?title%253DMain_Page)
 
-   Mostly used to construct and manipulate the Hessian operator in Newton's method implementation. Also used its linear solvers for the flavour of the code that uses high precision numerics.
+   Mostly used to store and manipulate the Hessian operator in Newton's method implementation. Also used its linear solvers for the flavour of the code that uses high precision numerics.
 
 2) [Intel MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html)
 
@@ -19,6 +19,22 @@ Here you will find the code I wrote to generate the data presented in ["The ther
 
 To compile the project, I have included a makefile to be used with GNU C++. You might have to modify that depending on where your libraries are located and the distribution of C++ you are using.
 
-The folder "Mathematica" contains the Mathematica notebooks I used to write the equations of motion of Einstein-Maxwell-Dilaton including the DeTurck trick term in Einstein's equations. The subfolder "Background" contains the notebooks concerning the background geometries. The subfolder "Conductivity" contains the notebooks for the equations governing the computation of the optical conductivity.
+The folder structure of the repository is:
 
-The above mentioned notebooks output the 
+ * *Mathematica*
+
+   Contains the Mathematica notebooks I used to write the equations of motion of Einstein-Maxwell-Dilaton including the DeTurck trick term in Einstein's equations. The subfolder "Background" contains the notebooks concerning the background geometries. The subfolder "Conductivity" contains the notebooks for the equations governing the computation of the optical conductivity.
+
+ * *Sourcefiles*
+
+   The above mentioned notebooks output the equations of motion and boundary conditions in C files. These need to moved to the folder "Sourcefiles" when compiling.
+
+* *Background*
+
+  The program that constructs the gravitational backgrounds which are dual to a explicit lattice configuration on the conformal boundary field theory.
+
+* *Perturbation*
+
+   The program that compute the optical conductivities of the holographic lattice
+
+  
