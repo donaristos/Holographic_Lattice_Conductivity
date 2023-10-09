@@ -20,3 +20,5 @@ Here you will find the code I wrote to generate the data presented in ["The ther
 To compile the project, I have included a makefile to be used with GNU C++. You might have to modify that depending on where your libraries are located and the distribution of C++ you are using.
 
 The folder "Mathematica" contains the Mathematica notebooks I used to write the equations of motion of Einstein-Maxwell-Dilaton including the DeTurck trick term in Einstein's equations. The subfolder "Background" contains the notebooks concerning the background geometries. The subfolder "Conductivity" contains the notebooks for the equations governing the computation of the optical conductivity.
+
+The above mentioned notebooks output the 
