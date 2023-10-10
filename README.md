@@ -7,7 +7,8 @@ The Black Brane Solutions
   The background black holes produced are four dimensional with the spacetime having two Killing vectors (symmetries). The ansatz for the metric and matter fields was based on functions that depend on the holographic radial direction as well as on a spatial direction of the boundary field theory. After all, these black branes break one of the field theory translations!
   
 <p align="center">
-<img src="images/Phi.png" width=47.5% height=47.5%><img src="images/Gtt.png" width=50% height=50%>
+<img src="images/Phi.png" height=170>
+<img src="images/Gtt.png" height=170>
 </p>
 
    Figure shows plots of the functions $\Phi$ and $G_{tt}$ parametrising the background ansatz for fixed temperature, chemical potential and scalar operator deformations. The resulting functions are periodic in the direction of the lattice. The backgrounds can be constructed using the program in the folder ["OpticalConductivity"](OpticalConductivity/main.cpp).
@@ -17,13 +18,15 @@ Optical Conductivity
 The second component of the code can compute the necessary perturbations in order to evaluate transport properties of the lattice. In the paper we chose to consider the electric optical conductivity.
 
 <p align="center">
-<img src="images/ReS.png" width=50% height=50%><img src="images/ReSReso.png" width=48.2% height=48.2%>
+<img src="images/ReS.png" height=160>
+<img src="images/ReSReso.png" height=160>
 </p>
 
 The figure shows plots of the real part of the electric conductivity as a function of the frequency of the external electric field. The left plot clearly shows the existence of a Drude peak as a result of momentum relaxation in the system due to the broken translations. The right plot shows the existence of a resonance for mid-infrared frequencies. This is the result of phononic oscillations in the system due to inhomogeneities.
 
 <p align="center">
-<img src="images/Rehtt.png" width=50% height=50%><img src="images/Rehyy.png" width=47.3% height=47.3%>
+<img src="images/Rehtt.png" height=170>
+<img src="images/Rehyy.png" height=170>
 </p>
 
 The above figure shows plot of some of the two dimensional functions parametrising the perturbation from which the optical conductivity is extracted. These are computed using the program under the folder ["Pertubation"](Perturbation/main.cpp).
