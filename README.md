@@ -7,7 +7,7 @@ The Black Brane Solutions
   The background black holes produced are four dimnsional with the spacetime having two Killing vectors (symmetries). The ansatz for the metric and matter fields was based on functions that depend on the holographic radial direction as well as on a spatial direction of the boundary field theory. After all, these are black branes that break one of the field theory translations!
 
   Here are some plots of two functions parametrising the background ansatz for fixed temeprature, chemical potential and scalar operator deformations.
-![Plot of the function][def]![Alt text](Phi.png)
+![Phi](Phi.png) ![Gtt](Gtt.png)
 
 
 Libraries
@@ -53,9 +53,3 @@ The folder structure of the repository is:
 * *Perturbation*
 
    The program that computes the optical conductivities of the holographic lattice.
-
-The Black Brane Solutions
-  ---
-  The background black holes produced are four dimnsional with the spacetime having two Killing vectors (symmetries). The ansatz for the metric and matter fields was based on functions that depend on the radial as well as on a spatial direction of the boundary field theory.
-
-[def]: Gtt.png
