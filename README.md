@@ -6,10 +6,11 @@ The Black Brane Solutions
   ---
   The background black holes produced are four dimnsional with the spacetime having two Killing vectors (symmetries). The ansatz for the metric and matter fields was based on functions that depend on the holographic radial direction as well as on a spatial direction of the boundary field theory. After all, these are black branes that break one of the field theory translations!
 
-  Figure ![Phi] shows plots of two functions parametrising the background ansatz for fixed temeprature, chemical potential and scalar operator deformations. The resulting functions are periodic in the direction of the lattice.
+  Figure ![Phi] shows plots the functions $\Phi$ and $G_{tt}$ parametrising the background ansatz for fixed temeprature, chemical potential and scalar operator deformations. The resulting functions are periodic in the direction of the lattice.
 
+<figure>
 <img src="Phi.png" width=50% height=50%><img src="Gtt.png" width=50% height=50%>
-
+</figure>
 
 Libraries
 ---
