@@ -1,6 +1,18 @@
 # Holographic Lattice Conductivity
 
-Here you will find the code I wrote to generate the data presented in ["The thermoelectric properties of inhomogeneous holographic lattices"](https://arxiv.org/abs/1409.6875) by A. Donos and J. Gauntlett. The code is in C++ and it required the libraries:
+Here you will find the code I wrote to generate the data presented in ["The thermoelectric properties of inhomogeneous holographic lattices"](https://arxiv.org/abs/1409.6875) by A. Donos and J. Gauntlett.
+
+The Black Brane Solutions
+  ---
+  The background black holes produced are four dimnsional with the spacetime having two Killing vectors (symmetries). The ansatz for the metric and matter fields was based on functions that depend on the holographic radial direction as well as on a spatial direction of the boundary field theory. After all, these are black branes that break one of the field theory translations!
+
+  Here are some plots of two functions parametrising the background ansatz for fixed temeprature, chemical potential and scalar operator deformations.
+![Plot of the function][def]![Alt text](Phi.png)
+
+
+Libraries
+---
+The code is in C++ and it requires the libraries:
 1) [Eigen](https://eigen.tuxfamily.org/index.php?title%253DMain_Page)
 
    Mostly used to store and manipulate the Hessian operator in Newton's method implementation. Also used its linear solvers for the flavour of the code that uses high precision numerics.
@@ -17,8 +29,11 @@ Here you will find the code I wrote to generate the data presented in ["The ther
 
    Used for higher precision numerics.
 
-To compile the project, I have included a makefile to be used with GNU C++. You might have to modify that depending on where your libraries are located and the distribution of C++ you are using.
+To compile the project, I have included a makefile to be used with Intel's C++ compiler. You might have to modify that depending on where your libraries are located and the distribution of C++ you are using.
 
+
+What and Where
+---
 The folder structure of the repository is:
 
  * *Mathematica*
@@ -39,4 +54,8 @@ The folder structure of the repository is:
 
    The program that computes the optical conductivities of the holographic lattice.
 
-  
+The Black Brane Solutions
+  ---
+  The background black holes produced are four dimnsional with the spacetime having two Killing vectors (symmetries). The ansatz for the metric and matter fields was based on functions that depend on the radial as well as on a spatial direction of the boundary field theory.
+
+[def]: Gtt.png
