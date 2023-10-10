@@ -1,0 +1,153 @@
+CC=icpc
+
+CPPFLAGS= -c -DEIGEN_NO_DEBUG -DNDEBUG -DEIGEN_USE_MKL_ALL -fPIC -Wall -m64 -openmp -Qoption,cpp,--extended_float_type
+
+HPATHS= -I /home/ad714/GCC/include \
+-I /home/ad714/GCC/boost -I /home/ad714/GCC/eigen \
+-I /home/ad714/GCC/SuiteSparse/UMFPACK/Include \
+-I /home/ad714/GCC/SuiteSparse/SuiteSparse_config \
+-I /home/ad714/GCC/SuiteSparse/AMD/Include \
+-I /home/ad714/GCC/SuiteSparse/COLAMD/Include \
+-I /home/ad714/GCC/eigen/unsupported/test/mpreal
+
+LPATHS= -L /home/ad714/GCC/lib \
+-L /home/ad714/GCC/SuiteSparse/UMFPACK/Lib \
+-L /home/ad714/GCC/SuiteSparse/AMD/Lib \
+-L /home/ad714/GCC/SuiteSparse/COLAMD/Lib \
+-L /home/ad714/GCC/SuiteSparse/CHOLMOD/Lib \
+-L /home/ad714/GCC/SuiteSparse/SuiteSparse_config
+
+LFLAGS= -DEIGEN_NO_DEBUG -DNDEBUG -DEIGEN_USE_MKL_ALL -Wall -m64 -openmp -O3 -Qoption,cpp,--extended_float_type\
+-lmpfr -limf -lrt\
+-lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lpthread\
+-lumfpack\
+-lsuitesparseconfig\
+-lcholmod\
+-lamd\
+-lcolamd\
+-Xlinker -rpath -Xlinker . -Xlinker -rpath -Xlinker /home/ad714/GCC/lib
+
+LFLAGS2= -DEIGEN_NO_DEBUG -DNDEBUG -DEIGEN_USE_MKL_ALL -Wall -m64 -openmp -Qoption,cpp,--extended_float_type\
+-lmpfr -limf -lrt\
+-lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lpthread\
+-lumfpack\
+-lsuitesparseconfig\
+-lcholmod\
+-lamd\
+-lcolamd\
+-Xlinker -rpath -Xlinker . -Xlinker -rpath -Xlinker /home/ad714/GCC/lib
+
+OBJS=function.o gridf.o ReadWrite.o NewtonMethod.o
+
+Background: BackgroundMPI BackgroundLDI BackgroundDI BackgroundQI
+
+Perturbation: PerturbationDI PerturbationDTI PerturbationLDI PerturbationLDTI PerturbationQI PerturbationQTI PerturbationMPI PerturbationMPTI
+
+PerturbationDI: perturbationD.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationDI perturbationD.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+PerturbationDTI: perturbationDT.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationDTI perturbationDT.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+	
+PerturbationLDI: perturbationLD.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationLDI perturbationLD.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+PerturbationLDTI: perturbationLDT.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationLDTI perturbationLDT.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+PerturbationQI: perturbationQ.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationQI perturbationQ.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+PerturbationQTI: perturbationQT.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationQTI perturbationQT.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+PerturbationMPI: perturbationMP.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationMPI perturbationMP.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+PerturbationMPTI: perturbationMPT.o PEOMS.so ProjectLibs.so
+	$(CC) -o PerturbationMPTI perturbationMPT.o PEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+BackgroundDI: backgroundD.o LEOMS.so ProjectLibs.so
+	$(CC) -o BackgroundDI backgroundD.o LEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+	
+BackgroundLDI: backgroundLD.o LEOMS.so ProjectLibs.so
+	$(CC) -o BackgroundLDI backgroundLD.o LEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+BackgroundQI: backgroundQ.o LEOMS.so ProjectLibs.so
+	$(CC) -o BackgroundQI backgroundQ.o LEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+	
+BackgroundMPI: backgroundMP.o LEOMS.so ProjectLibs.so
+	$(CC) -o BackgroundMPI backgroundMP.o LEOMS.so ProjectLibs.so $(LFLAGS) $(HPATHS) $(LPATHS)
+
+backgroundD.o: OpticalConductivity/main.cpp
+	$(CC) $(CPPFLAGS) -O3 $(LPATHS) $(HPATHS) OpticalConductivity/main.cpp -o backgroundD.o
+	
+backgroundLD.o: OpticalConductivity/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DLONGD $(LPATHS) $(HPATHS) OpticalConductivity/main.cpp -o backgroundLD.o
+
+backgroundQ.o: OpticalConductivity/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DF128 $(LPATHS) $(HPATHS) OpticalConductivity/main.cpp -o backgroundQ.o
+	
+backgroundMP.o: OpticalConductivity/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DMP $(LPATHS) $(HPATHS) OpticalConductivity/main.cpp -o backgroundMP.o
+
+perturbationD.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationD.o
+
+perturbationDT.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DTEST $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationDT.o
+	
+perturbationLD.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DLONGD $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationLD.o
+
+perturbationLDT.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DLONGD -DTEST $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationLDT.o
+
+perturbationQ.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DF128 $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationQ.o
+
+perturbationQT.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DF128 -DTEST $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationQT.o
+	
+perturbationMP.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DMP $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationMP.o
+
+perturbationMPT.o: PerturbationV2/main.cpp
+	$(CC) $(CPPFLAGS) -O3 -DMP -DTEST $(LPATHS) $(HPATHS) PerturbationV2/main.cpp -o perturbationMPT.o
+	
+PertEOMSLinearOp.o: PertEOMSLinearOp.cpp PertsEOMSLinearOp.h
+	$(CC) $(CPPFLAGS) -O0 $(LPATHS) $(HPATHS) PertEOMSLinearOp.cpp
+
+PertEOMS.o: PertEOMS.cpp PertEOMS.h
+	$(CC) $(CPPFLAGS) -O0 $(LPATHS) $(HPATHS) PertEOMS.cpp
+
+PEOMS.so: PertEOMSLinearOp.o PertEOMS.o ProjectLibs.so
+	$(CC) -shared -o PEOMS.so PertEOMSLinearOp.o PertEOMS.o ProjectLibs.so $(LFLAGS2) $(HPATHS) $(LPATHS)
+
+LatticeLinearOp.o: LatticeLinearOp.cpp LatticeLinearOp.h
+	$(CC) $(CPPFLAGS) -O0 $(LPATHS) $(HPATHS) LatticeLinearOp.cpp
+
+LatticeEOMS.o: LatticeEOMS.cpp LatticeEOMS.h
+	$(CC) $(CPPFLAGS) -O0 $(LPATHS) $(HPATHS) LatticeEOMS.cpp
+	
+LEOMS.so: LatticeLinearOp.o LatticeEOMS.o ProjectLibs.so
+	$(CC) -shared -o LEOMS.so LatticeLinearOp.o LatticeEOMS.o ProjectLibs.so $(LFLAGS2) $(HPATHS) $(LPATHS)
+	
+ProjectLibs.so: $(OBJS)
+	$(CC) -shared -o ProjectLibs.so $(OBJS) $(LFLAGS) $(HPATHS) $(LPATHS)
+
+function.o: function.cpp function.h
+	$(CC) $(CPPFLAGS) -O3 $(LPATHS) $(HPATHS) function.cpp
+
+NewtonMethod.o: NewtonMethod.cpp NewtonMethod.h
+	$(CC) $(CPPFLAGS) -O3 $(LPATHS) $(HPATHS) NewtonMethod.cpp
+
+gridf.o: gridf.cpp gridf.h
+	$(CC) $(CPPFLAGS) -O3 $(LPATHS) $(HPATHS) gridf.cpp
+
+ReadWrite.o: ReadWrite.cpp ReadWrite.h
+	$(CC) $(CPPFLAGS) -O3 $(LPATHS) $(HPATHS) ReadWrite.cpp
+
+clean:
+	rm -rf *.o *.so
+
